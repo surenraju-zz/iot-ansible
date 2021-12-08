@@ -1,0 +1,7 @@
+--- 
+- 
+  hosts: "servers:clients"
+  name: "Configure servers and clients"
+  remote_user: ubuntu
+  roles:
+  - iot

@@ -1,0 +1,22 @@
+--- 
+- 
+  become: true
+  file: 
+    mode: 493
+    path: /home/ubuntu/scripts
+    state: directory
+  name: "Create scripts directory"
+- 
+  become: true
+  get_url: 
+    dest: /home/ubuntu/scripts
+    mode: 493
+    url: "https://raw.githubusercontent.com/surenraju/scripts/main/install.sh"
+  name: "Download install.sh script"
+- 
+  become: true
+  command: "sh /home/ubuntu/scripts/install.sh"
+  name: "Execute install.sh script"
+  register: installation
+- 
+  debug: var=installation.stdout_lines
